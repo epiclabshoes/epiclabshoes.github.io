@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epic Lab - Professional Shoe Cleaning Service</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS */
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1600269452121-1f5d1415f5ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 90vh;
+        }
+        
+        .before-after-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .before-after-slider {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            overflow: hidden;
+            border-right: 4px solid #fff;
+        }
+        
+        .before-after-slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .slider-handle {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #fff;
+            transform: translateX(-50%);
+            cursor: ew-resize;
+        }
+        
+        .slider-handle:after {
+            content: "↔";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 50px;
+            height: 50px;
+            color: white;
+            font-size: 20px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translate(-50%, -50%);
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .service-card {
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-shoe-prints text-blue-500 text-3xl mr-2"></i>
+                        <span class="text-xl font-bold text-gray-900">EPIC LAB</span>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="#home" class="nav-link text-gray-900 px-3 py-2 text-sm font-medium">Home</a>
+                        <a href="#services" class="nav-link text-gray-900 px-3 py-2 text-sm font-medium">Services</a>
+                        <a href="#before-after" class="nav-link text-gray-900 px-3 py-2 text-sm font-medium">Before & After</a>
+                        <a href="#pricing" class="nav-link text-gray-900 px-3 py-2 text-sm font-medium">Pricing</a>
+                        <a href="#testimonials" class="nav-link text-gray-900 px-3 py-2 text-sm font-medium">Testimonials</a>
+                        <a href="#about" class="nav-link text-gray-900 px-3 py-2 text-sm font-medium">About Us</a>
+                        <a href="#contact" class="nav-link text-gray-900 px-3 py-2 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button type="button" class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div class="mobile-menu hidden md:hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 rounded-md">Home</a>
+                <a href="#services" class="block px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 rounded-md">Services</a>
+                <a href="#before-after" class="block px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 rounded-md">Before & After</a>
+                <a href="#pricing" class="block px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 rounded-md">Pricing</a>
+                <a href="#testimonials" class="block px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 rounded-md">Testimonials</a>
+                <a href="#about" class="block px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 rounded-md">About Us</a>
+                <a href="#contact" class="block px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 rounded-md">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero flex items-center justify-center text-center text-white">
+        <div class="px-4 sm:px-6 lg:px-8 max-w-4xl">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Bring Your Shoes Back to Life</h1>
+            <p class="text-xl md:text-2xl mb-8">Professional shoe cleaning and restoration services that make your favorite kicks look brand new again.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#services" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">Our Services</a>
+                <a href="#contact" class="bg-transparent hover:bg-white hover:text-gray-900 text-white font-bold py-3 px-6 border-2 border-white rounded-lg transition duration-300">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Our Premium Services</h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-600 mx-auto">We offer a range of specialized services to meet all your shoe care needs.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Service 1 -->
+                <div class="service-card bg-gray-50 rounded-lg overflow-hidden shadow-lg">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1025&q=80" alt="Basic Cleaning" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Basic Cleaning</h3>
+                        <p class="text-gray-600 mb-4">Our standard cleaning service removes dirt, stains and restores your shoes' original look. Perfect for regular maintenance.</p>
+                        <div class="flex items-center text-blue-600">
+                            <span class="font-medium">Learn more</span>
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-gray-50 rounded-lg overflow-hidden shadow-lg">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600269452121-1f5d1415f5ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Deep Cleaning" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Deep Cleaning</h3>
+                        <p class="text-gray-600 mb-4">Intensive cleaning that reaches deep into the materials to remove stubborn stains, odors and built-up grime.</p>
+                        <div class="flex items-center text-blue-600">
+                            <span class="font-medium">Learn more</span>
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-gray-50 rounded-lg overflow-hidden shadow-lg">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1025&q=80" alt="Sneaker Restoration" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Sneaker Restoration</h3>
+                        <p class="text-gray-600 mb-4">Specialized service for sneakerheads that includes sole whitening, color restoration and material repair.</p>
+                        <div class="flex items-center text-blue-600">
+                            <span class="font-medium">Learn more</span>
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card bg-gray-50 rounded-lg overflow-hidden shadow-lg">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Leather Care" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Leather Care</h3>
+                        <p class="text-gray-600 mb-4">Professional cleaning, conditioning and polishing for leather shoes to maintain their quality and longevity.</p>
+                        <div class="flex items-center text-blue-600">
+                            <span class="font-medium">Learn more</span>
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card bg-gray-50 rounded-lg overflow-hidden shadow-lg">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1605348536760-22d18f5870cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Deodorizing" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Deodorizing</h3>
+                        <p class="text-gray-600 mb-4">Eliminate unpleasant odors with our specialized deodorizing treatment that kills bacteria at the source.</p>
+                        <div class="flex items-center text-blue-600">
+                            <span class="font-medium">Learn more</span>
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card bg-gray-50 rounded-lg overflow-hidden shadow-lg">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae57?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1098&q=80" alt="Custom Requests" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Custom Requests</h3>
+                        <p class="text-gray-600 mb-4">Have special needs? We offer customized solutions tailored to your specific shoe care requirements.</p>
+                        <div class="flex items-center text-blue-600">
+                            <span class="font-medium">Learn more</span>
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before & After Section -->
+    <section id="before-after" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Before & After</h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-600 mx-auto">See the transformation for yourself</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Before/After 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="before-after-container relative h-64 md:h-80">
+                        <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1025&q=80" alt="Before cleaning" class="w-full h-full object-cover">
+                        <div class="before-after-slider">
+                            <img src="https://images.unsplash.com/photo-1600269452121-1f5d1415f5ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="After cleaning" class="w-full h-full object-cover">
+                        </div>
+                        <div class="slider-handle"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">White Sneakers Restoration</h3>
+                        <p class="text-gray-600">These white sneakers were heavily stained and discolored. After our deep cleaning treatment, they look brand new again.</p>
+                    </div>
+                </div>
+                
+                <!-- Before/After 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="before-after-container relative h-64 md:h-80">
+                        <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Before cleaning" class="w-full h-full object-cover">
+                        <div class="before-after-slider">
+                            <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1025&q=80" alt="After cleaning" class="w-full h-full object-cover">
+                        </div>
+                        <div class="slider-handle"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Leather Shoes Revival</h3>
+                        <p class="text-gray-600">These leather shoes were dry, cracked and dull. Our leather care treatment restored their shine and flexibility.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-10 text-center">
+                <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition duration-300">
+                    View More Transformations
+                    <i class="fas fa-arrow-right ml-3"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Our Pricing</h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-600 mx-auto">Transparent pricing for all our services</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Basic Plan -->
+                <div class="bg-gray-50 rounded-lg shadow-lg overflow-hidden border border-gray-200">
+                    <div class="px-6 py-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Basic Cleaning</h3>
+                        <p class="text-gray-600 mb-6">Perfect for regular maintenance</p>
+                        <div class="flex items-baseline mb-6">
+                            <span class="text-4xl font-extrabold text-gray-900">Rp150k</span>
+                            <span class="ml-1 text-lg font-medium text-gray-500">/pair</span>
+                        </div>
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="text-gray-700">Exterior cleaning</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="text-gray-700">Stain removal</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="text-gray-700">Light deodorizing</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="text-gray-700">Standard drying</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="px-6 pt-4 pb-8">
+                        <a href="#contact" class="w-full flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition duration-300">
+                            Book Now
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Premium Plan -->
+                <div class="bg-gray-50 rounded-lg shadow-lg overflow-hidden border-2 border-blue-500 transform scale-105">
+                    <div class="px-6 py-8">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900 mb-2">Premium Cleaning</h3>
+                                <p class="text-gray-600 mb-6">Our most popular package</p>
+                            </div>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">Popular</span>
+                        </div>
+                        <div class="flex items-baseline mb-6">
+                            <span class="text-4xl font-extrabold text-gray-900">Rp250k</span>
+                            <span class="ml-1 text-lg font-medium text-gray-500">/pair</span>
+                        </div>
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="text-gray-700">Deep exterior cleaning</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="text-gray-700">Interior cleaning</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="text-gray-700">Stubborn stain removal</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="text-gray-700">Advanced deodorizing</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="text-gray-700">Conditioning (leather)</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="px-6 pt-4 pb-8">
+                        <a href="#contact" class="w-full flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition duration-300">
+                            Book Now
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Restoration Plan -->
+                <div class="bg-gray-50 rounded-lg shadow-lg overflow-hidden border border-gray-200">
+                    <div class="px-6 py-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Restoration</h3>
+                        <p class="text-gray-600 mb-6">For heavily worn shoes</p>
+                        <div class="flex items-baseline mb-6">
+                            <span class="text-4xl font-extrabold text-gray-900">Rp350k</span>
+                            <span class="ml-1 text-lg font-medium text-gray-500">/pair</span>
+                        </div>
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="text-gray-700">Complete restoration</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="text-gray-700">Sole whitening</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="text-gray-700">Color restoration</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="text-gray-700">Minor repairs</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="text-gray-700">Premium protection</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="px-6 pt-4 pb-8">
+                        <a href="#contact" class="w-full flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition duration-300">
+                            Book Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-blue-50 rounded-lg p-6">
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Additional Services</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 bg-blue-100 rounded-md p-2">
+                            <i class="fas fa-spray-can text-blue-600 text-xl"></i>
+                        </div>
+                        <div class="ml-3">
+                            <h4 class="text-lg font-medium text-gray-900">Deodorizing Only</h4>
+                            <p class="mt-1 text-gray-600">Rp75k /pair</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 bg-blue-100 rounded-md p-2">
+                            <i class="fas fa-brush text-blue-600 text-xl"></i>
+                        </div>
+                        <div class="ml-3">
+                            <h4 class="text-lg font-medium text-gray-900">Sole Whitening</h4>
+                            <p class="mt-1 text-gray-600">Rp100k /pair</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 bg-blue-100 rounded-md p-2">
+                            <i class="fas fa-tools text-blue-600 text-xl"></i>
+                        </div>
+                        <div class="ml-3">
+                            <h4 class="text-lg font-medium text-gray-900">Minor Repairs</h4>
+                            <p class="mt-1 text-gray-600">Price varies</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">What Our Customers Say</h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-600 mx-auto">Don't just take our word for it</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-white rounded-lg shadow-lg p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah K.">
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-lg font-medium text-gray-900">Sarah K.</h3>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"I brought in my favorite white sneakers that were almost unwearable from dirt and stains. Epic Lab made them look brand new again! The service was quick and the staff was super friendly. Will definitely be coming back."</p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-white rounded-lg shadow-lg p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/men/45.jpg" alt="David L.">
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-lg font-medium text-gray-900">David L.</h3>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"As a sneaker collector, I'm very particular about who handles my shoes. Epic Lab exceeded my expectations with their restoration service. They brought back a pair of 2015 Jordans that I thought were beyond saving. Professional and meticulous work!"</p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-white rounded-lg shadow-lg p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Michelle T.">
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-lg font-medium text-gray-900">Michelle T.</h3>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"The leather care service saved my expensive work shoes. They were dry and cracking, but after Epic Lab's treatment, they're soft, shiny and look better than when I first bought them. Worth every rupiah!"</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition duration-300">
+                    Read More Reviews
+                    <i class="fas fa-arrow-right ml-3"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                <div class="mb-12 lg:mb-0">
+                    <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1025&q=80" alt="About Epic Lab" class="rounded-lg shadow-xl w-full h-auto">
+                </div>
+                <div>
+                    <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl mb-6">Our Story</h2>
+                    <p class="text-lg text-gray-600 mb-6">Founded in 2018, Epic Lab began as a small passion project by sneaker enthusiasts who were frustrated with the lack of quality shoe cleaning services in Jakarta. What started as a hobby quickly grew into a professional service as word spread about our exceptional results.</p>
+                    <p class="text-lg text-gray-600 mb-6">Today, we're proud to be Jakarta's premier shoe cleaning and restoration service, trusted by sneakerheads, professionals, and everyday shoe lovers alike. Our team combines technical expertise with genuine care for footwear to deliver results that consistently exceed expectations.</p>
+                    
+                    <div class="mt-8">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Our Mission</h3>
+                        <p class="text-gray-600 mb-6">To extend the life of your favorite footwear through professional care and restoration, reducing waste and helping you get the most value from your shoe investments.</p>
+                        
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Our Values</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0 bg-blue-100 rounded-md p-1">
+                                    <i class="fas fa-check text-blue-600 text-sm"></i>
+                                </div>
+                                <p class="ml-3 text-gray-600">Quality: We never compromise on the quality of our work</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0 bg-blue-100 rounded-md p-1">
+                                    <i class="fas fa-check text-blue-600 text-sm"></i>
+                                </div>
+                                <p class="ml-3 text-gray-600">Passion: We genuinely love what we do</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0 bg-blue-100 rounded-md p-1">
+                                    <i class="fas fa-check text-blue-600 text-sm"></i>
+                                </div>
+                                <p class="ml-3 text-gray-600">Innovation: We constantly improve our techniques</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0 bg-blue-100 rounded-md p-1">
+                                    <i class="fas fa-check text-blue-600 text-sm"></i>
+                                </div>
+                                <p class="ml-3 text-gray-600">Sustainability: We use eco-friendly products whenever possible</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Get In Touch</h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-600 mx-auto">We'd love to hear from you</p>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 bg-blue-100 rounded-md p-2">
+                                    <i class="fas fa-map-marker-alt text-blue-600"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="text-lg font-medium text-gray-900">Our Location</h4>
+                                    <p class="mt-1 text-gray-600">Jl. Kemang Raya No. 12, Jakarta Selatan</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 bg-blue-100 rounded-md p-2">
+                                    <i class="fas fa-phone-alt text-blue-600"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="text-lg font-medium text-gray-900">Phone</h4>
+                                    <p class="mt-1 text-gray-600">+62 877 7666 3892</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 bg-blue-100 rounded-md p-2">
+                                    <i class="fas fa-envelope text-blue-600"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="text-lg font-medium text-gray-900">Email</h4>
+                                    <p class="mt-1 text-gray-600">hello@epiclabjkt.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 bg-blue-100 rounded-md p-2">
+                                    <i class="fas fa-clock text-blue-600"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="text-lg font-medium text-gray-900">Business Hours</h4>
+                                    <p class="mt-1 text-gray-600">Monday - Saturday: 10AM - 8PM</p>
+                                    <p class="text-gray-600">Sunday: 12PM - 6PM</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="text-lg font-medium text-gray-900 mb-4">Follow Us</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://www.instagram.com/epiclabjkt" target="_blank" class="bg-gray-100 hover:bg-gray-200 rounded-full p-3 transition duration-300">
+                                    <i class="fab fa-instagram text-gray-700 text-xl"></i>
+                                </a>
+                                <a href="https://wa.me/6287776663892" target="_blank" class="bg-gray-100 hover:bg-gray-200 rounded-full p-3 transition duration-300">
+                                    <i class="fab fa-whatsapp text-gray-700 text-xl"></i>
+                                </a>
+                                <a href="#" class="bg-gray-100 hover:bg-gray-200 rounded-full p-3 transition duration-300">
+                                    <i class="fab fa-facebook-f text-gray-700 text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-8 md:p-12">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h3>
+                        <form class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700">Your Name</label>
+                                <input type="text" id="name" name="name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                                <input type="email" id="email" name="email" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            
+                            <div>
+                                <label for="service" class="block text-sm font-medium text-gray-700">Service Interested In</label>
+                                <select id="service" name="service" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                    <option>Basic Cleaning</option>
+                                    <option>Deep Cleaning</option>
+                                    <option>Sneaker Restoration</option>
+                                    <option>Leather Care</option>
+                                    <option>Deodorizing</option>
+                                    <option>Custom Request</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700">Your Message</label>
+                                <textarea id="message" name="message" rows="4" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
+                            </div>
+                            
+                            <div>
+                                <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300">
+                                    Send Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div class="h-96 w-full">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.8195613507864!3d-6.194741395493371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x6b45e67356080477!2sJl.%20Kemang%20Raya%20No.12%2C%20RT.11%2FRW.1%2C%20Bangka%2C%20Kec.%20Mampang%20Prpt.%2C%20Kota%20Jakarta%20Selatan%2C%20Daerah%20Khusus%20Ibukota%20Jakarta%2012730!5e0!3m2!1sen!2sid!4v1625555555555!5m2!1sen!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">EPIC LAB</h3>
+                    <p class="text-gray-400">Jakarta's premier shoe cleaning and restoration service. Bringing your favorite footwear back to life since 2018.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">Services</a></li>
+                        <li><a href="#pricing" class="text-gray-400 hover:text-white transition duration-300">Pricing</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">About Us</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Basic Cleaning</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Deep Cleaning</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Sneaker Restoration</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Leather Care</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Deodorizing</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Connect With Us</h4>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="https://www.instagram.com/epiclabjkt" target="_blank" class="bg-gray-800 hover:bg-gray-700 rounded-full p-3 transition duration-300">
+                            <i class="fab fa-instagram text-white"></i>
+                        </a>
+                        <a href="https://wa.me/6287776663892" target="_blank" class="bg-gray-800 hover:bg-gray-700 rounded-full p-3 transition duration-300">
+                            <i class="fab fa-whatsapp text-white"></i>
+                        </a>
+                        <a href="#" class="bg-gray-800 hover:bg-gray-700 rounded-full p-3 transition duration-300">
+                            <i class="fab fa-facebook-f text-white"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-400">Email: hello@epiclabjkt.com</p>
+                    <p class="text-gray-400">Phone: +62 877 7666 3892</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2023 Epic Lab. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition duration-300">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition duration-300">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition duration-300">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-button').addEventListener('click', function() {
+            document.querySelector('.mobile-menu').classList.toggle('hidden');
+        });
+        
+        // Before/After slider functionality
+        document.querySelectorAll('.before-after-container').forEach(container => {
+            const slider = container.querySelector('.before-after-slider');
+            const handle = container.querySelector('.slider-handle');
+            let isDragging = false;
+            
+            function moveSlider(e) {
+                if (!isDragging) return;
+                
+                // Calculate position
+                const containerRect = container.getBoundingClientRect();
+                let pos = (e.clientX - containerRect.left) / containerRect.width;
+                
+                // Keep within bounds
+                pos = Math.max(0, Math.min(1, pos));
+                
+                // Update slider width
+                slider.style.width = `${pos * 100}%`;
+                handle.style.left = `${pos * 100}%`;
+            }
+            
+            // Mouse events
+            handle.addEventListener('mousedown', () => isDragging = true);
+            document.addEventListener('mousemove', moveSlider);
+            document.addEventListener('mouseup', () => isDragging = false);
+            
+            // Touch events
+            handle.addEventListener('touchstart', () => isDragging = true);
+            document.addEventListener('touchmove', (e) => {
+                if (e.touches.length > 0) {
+                    moveSlider(e.touches[0]);
+                }
+            });
+            document.addEventListener('touchend', () => isDragging = false);
+        });
+        
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.querySelector('.mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
