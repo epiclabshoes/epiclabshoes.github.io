@@ -1,9 +1,47 @@
 /* Custom CSS */
-.hero {
+
+/* .hero {
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1600269452121-1f5d1415f5ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
     background-size: cover;
     background-position: center;
     height: 90vh;
+} */
+
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                linear-gradient(90deg, #1e3a8a, #3b82f6, #9333ea);
+    background-size: cover, 300% 300%;
+    background-position: center, 0% 50%;
+    background-blend-mode: overlay;
+    animation: gradientShift 5s infinite;
+    height: 90vh;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: center, 0% 50%;
+    }
+    50% {
+        background-position: center, 100% 50%;
+    }
+    100% {
+        background-position: center, 0% 50%;
+    }
+}
+
+#ourservicebtn {
+    background-color: #e76f51; /* Warm Coral */
+    color: #ffffff; /* White Text */
+    border-radius: 0.5rem; /* Smooth Edges for Appeal */
+    padding: 0.75rem 1.5rem; /* Comfortable Size */
+    transition: background-color 0.3s;
+    font-weight: bold; /* Make Text Stand Out */
+    text-decoration: none; /* Clean Look */
+}
+
+#ourservicebtn:hover {
+    background-color: #d15b39; /* Muted Red on Hover */
+    color: #ffffff; /* Keep White Text */
 }
 
 .before-after-container {
