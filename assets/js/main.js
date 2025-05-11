@@ -5,38 +5,29 @@ document.querySelector('.mobile-menu-button').addEventListener('click', function
 
 // Before/After slider functionality
 document.querySelectorAll('.before-after-container').forEach(container => {
-    const slider = container.querySelector('.before-after-slider');
+    const topImage = container.querySelector('.clip-img');
     const handle = container.querySelector('.slider-handle');
     let isDragging = false;
-    
+
     function moveSlider(e) {
         if (!isDragging) return;
-        
-        // Calculate position
-        const containerRect = container.getBoundingClientRect();
-        let pos = (e.clientX - containerRect.left) / containerRect.width;
-        
-        // Keep within bounds
-        pos = Math.max(0, Math.min(1, pos));
-        
-        // Update slider width
-        slider.style.width = `${pos * 100}%`;
-        handle.style.left = `${pos * 100}%`;
+
+        const rect = container.getBoundingClientRect();
+        let x = (e.clientX || e.touches?.[0].clientX) - rect.left;
+        x = Math.max(0, Math.min(x, rect.width));
+
+        const percent = (x / rect.width) * 100;
+        topImage.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+        handle.style.left = `${percent}%`;
     }
-    
-    // Mouse events
+
     handle.addEventListener('mousedown', () => isDragging = true);
-    document.addEventListener('mousemove', moveSlider);
     document.addEventListener('mouseup', () => isDragging = false);
-    
-    // Touch events
+    document.addEventListener('mousemove', moveSlider);
+
     handle.addEventListener('touchstart', () => isDragging = true);
-    document.addEventListener('touchmove', (e) => {
-        if (e.touches.length > 0) {
-            moveSlider(e.touches[0]);
-        }
-    });
     document.addEventListener('touchend', () => isDragging = false);
+    document.addEventListener('touchmove', moveSlider);
 });
 
 // Back to top button

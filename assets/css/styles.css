@@ -90,3 +90,8 @@
 .nav-link:hover:after {
     width: 100%;
 }
+
+.clip-img {
+    clip-path: inset(0 50% 0 0); /* hides right half initially */
+    transition: clip-path 0s;
+}
