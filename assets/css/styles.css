@@ -7,7 +7,7 @@
     height: 90vh;
 } */
 
-.hero {
+/* .hero {
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
                 linear-gradient(90deg, #1e3a8a, #3b82f6, #9333ea);
     background-size: cover, 300% 300%;
@@ -15,8 +15,11 @@
     background-blend-mode: overlay;
     animation: gradientShift 5s infinite;
     height: 90vh;
+} */
+.hero {
+    background: url('img/EL.png') center/cover no-repeat;
+    height: 90vh;
 }
-
 @keyframes gradientShift {
     0% {
         background-position: center, 0% 50%;
